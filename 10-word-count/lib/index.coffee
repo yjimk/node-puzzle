@@ -1,13 +1,15 @@
 through2 = require 'through2'
 
-
 module.exports = ->
   words = 0
   lines = 1
 
   transform = (chunk, encoding, cb) ->
-    tokens = chunk.split(' ')
-    words = tokens.length
+    words += (chunk.match(/"(?:[^"\\]|\\.)*"/g) || []).length
+    chunk = chunk.replace(/"(?:[^"\\]|\\.)*"/g, '')
+    if chunk.length > 0
+      tokens = chunk.split(' ')
+      words += tokens.length
     return cb()
 
   flush = (cb) ->
