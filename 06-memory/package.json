@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "coffee-script": "^1.9.3"
+    "coffee-script": "^1.11.1"
   },
   "devDependencies": {
     "mocha": "^2.2.5"
